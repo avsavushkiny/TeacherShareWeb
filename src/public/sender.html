@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TeacherShare — Передатчик</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <main class="container sender-container">
+        <h1>Передатчик</h1>
+        <p class="subtitle">
+            Выберите экран, выделите область и отправьте её изображение на проектор.
+        </p>
+
+        <section class="feature-panel">
+            <h2>Изображение</h2>
+            <div class="toolbar">
+                <label class="file-label" for="imageFile">Открыть изображение…</label>
+                <input id="imageFile" type="file" accept="image/*" hidden>
+                <button id="sendImageFile" disabled>Передать изображение</button>
+            </div>
+            <p class="hint">Выберите изображение на ноутбуке. Оно будет показано на проекторе целиком, с сохранением пропорций.</p>
+        </section>
+
+        <section class="feature-panel">
+            <h2>Текстовый слайд</h2>
+            <label for="textContent">Текст для проектора</label>
+            <textarea id="textContent" rows="3" placeholder="Введите текст…">Тема занятия</textarea>
+            <div class="text-options">
+                <label>Размер шрифта: <output id="fontSizeValue">48</output> px
+                    <input id="fontSize" type="range" min="20" max="120" value="48">
+                </label>
+                <label>Цвет текста <input id="textColor" type="color" value="#111111"></label>
+                <label>Фон <input id="backgroundColor" type="color" value="#ffffff"></label>
+            </div>
+            <div class="toolbar">
+                <button id="showText">Показать текст на проекторе</button>
+            </div>
+            <p class="hint">Текст размещается по центру с автоматическим переносом строк. Для изменения текста нажмите кнопку ещё раз.</p>
+        </section>
+
+        <section class="feature-panel">
+            <h2>Захват экрана</h2>
+            <div class="toolbar">
+            <button id="startCapture">Выбрать экран</button>
+            <button id="selectRegion" class="secondary" disabled>Выделить область</button>
+            <button id="sendImage" disabled>Отправить снимок</button>
+            <button id="autoUpdate" class="secondary" disabled>Автообновление: выкл.</button>
+            <button id="stopCapture" class="danger" disabled>Остановить передачу</button>
+            </div>
+        </section>
+
+        <p id="status" class="status" role="status" aria-live="polite">
+            Откройте изображение, создайте текстовый слайд или нажмите «Выбрать экран».
+        </p>
+
+        <div class="preview-wrap">
+            <canvas id="preview" aria-label="Предварительный просмотр захваченного экрана"></canvas>
+        </div>
+
+        <p class="hint">
+            Для захвата экрана нажмите «Выделить область», затем протяните мышью прямоугольник
+            по предварительному просмотру. Нажмите Esc, чтобы отменить выделение.
+        </p>
+    </main>
+    <script src="/js/sender.js"></script>
+</body>
+</html>

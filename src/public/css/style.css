@@ -1,0 +1,281 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #202938;
+    background: #f1f4f9;
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    width: min(1100px, 100%);
+    margin: 44px auto;
+    padding: 24px;
+}
+
+h1 {
+    text-align: center;
+    font-size: clamp(30px, 4vw, 40px);
+    margin: 0 0 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #657084;
+    margin: 0 auto 30px;
+    line-height: 1.5;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.card {
+    display: block;
+    padding: 30px;
+    background: #fff;
+    border: 1px solid #dce2eb;
+    border-radius: 16px;
+    color: inherit;
+    text-decoration: none;
+    transition: transform .15s, box-shadow .15s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px #15233b18;
+}
+
+.card-icon {
+    font-size: 38px;
+}
+
+.card h2 {
+    margin: 12px 0 8px;
+}
+
+.card p,
+.note,
+.hint {
+    color: #657084;
+}
+
+.note {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 16px;
+    background: white;
+    border: 1px solid #dce2eb;
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+
+button {
+    padding: 11px 16px;
+    border: 0;
+    border-radius: 8px;
+    background: #2459d3;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+    filter: brightness(.94);
+}
+
+button:disabled {
+    opacity: .45;
+    cursor: default;
+}
+
+button.secondary {
+    background: #e6ebf4;
+    color: #202938;
+}
+
+button.danger {
+    background: #b42318;
+}
+
+.status {
+    min-height: 22px;
+    color: #536177;
+    overflow-wrap: anywhere;
+}
+
+.preview-wrap {
+    background: #dce2eb;
+    border: 1px solid #ccd2dc;
+    border-radius: 8px;
+    padding: 8px;
+    overflow: auto;
+}
+
+#preview {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    background: #ddd;
+    cursor: default;
+    touch-action: none;
+}
+
+.hint {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.receiver-body {
+    background: #000;
+    overflow: hidden;
+}
+
+.receiver {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: #000;
+}
+
+.receiver img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.receiver-status {
+    color: white;
+    text-align: center;
+    padding: 24px;
+    line-height: 1.5;
+}
+
+.fullscreen-button {
+    position: absolute;
+    right: 18px;
+    top: 18px;
+    z-index: 5;
+    opacity: .82;
+}
+
+.receiver:fullscreen {
+    width: 100vw;
+    height: 100vh;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 700px) {
+    .container {
+        margin: 20px auto;
+        padding: 16px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .toolbar button {
+        width: 100%;
+    }
+}
+
+.feature-panel {
+    margin: 18px 0;
+    padding: 18px;
+    background: #fff;
+    border: 1px solid #dce2eb;
+    border-radius: 12px;
+}
+
+.feature-panel h2 {
+    margin: 0 0 12px;
+    font-size: 21px;
+}
+
+.feature-panel > label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.file-label {
+    display: inline-block;
+    padding: 11px 16px;
+    border-radius: 8px;
+    background: #2459d3;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.file-label:hover { filter: brightness(.94); }
+
+#textContent {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd3df;
+    border-radius: 8px;
+    font: inherit;
+    resize: vertical;
+}
+
+.text-options {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 22px;
+    margin-top: 14px;
+}
+
+.text-options label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.text-options input[type="range"] { width: min(260px, 40vw); }
+.text-options input[type="color"] {
+    width: 42px;
+    height: 32px;
+    padding: 2px;
+    border: 1px solid #cbd3df;
+    border-radius: 6px;
+    background: white;
+}
+
+@media (max-width: 700px) {
+    .text-options { align-items: stretch; flex-direction: column; gap: 12px; }
+    .text-options label { justify-content: space-between; }
+    .file-label { text-align: center; }
+}
